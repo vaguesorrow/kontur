@@ -1,0 +1,49 @@
+ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+    attributes:
+      user:
+        email: "Электронная почта"
+        username: "Имя пользователя"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        current_password: "Текущий пароль"
+        remember_me: "Запомнить меня"
+    errors:
+      messages:
+        record_invalid: "Не удалось сохранить запись: %{errors}"
+  errors:
+    messages:
+      blank: "не может быть пустым"
+      taken: "уже используется"
+      invalid: "имеет неверный формат"
+      confirmation: "не совпадает с полем «%{attribute}»"
+      inclusion: "имеет недопустимое значение"
+      too_short: "слишком короткий (минимум: %{count})"
+      too_long: "слишком длинный (максимум: %{count})"
+      not_saved:
+        one: "Не удалось сохранить %{resource}: исправьте ошибку."
+        few: "Не удалось сохранить %{resource}: исправьте %{count} ошибки."
+        many: "Не удалось сохранить %{resource}: исправьте %{count} ошибок."
+        other: "Не удалось сохранить %{resource}: исправьте %{count} ошибки."
+  devise:
+    failure:
+      already_authenticated: "Вы уже вошли в систему."
+      unauthenticated: "Войдите или зарегистрируйтесь, чтобы продолжить."
+      invalid: "Неверная электронная почта или пароль."
+      not_found_in_database: "Неверная электронная почта или пароль."
+      timeout: "Сеанс завершён. Войдите снова."
+      inactive: "Ваша учётная запись ещё не активирована."
+      unconfirmed: "Подтвердите электронную почту, чтобы продолжить."
+      locked: "Ваша учётная запись заблокирована."
+      last_attempt: "Осталась одна попытка до блокировки учётной записи."
+    sessions:
+      signed_in: "Вы вошли в систему."
+      signed_out: "Вы вышли из системы."
+      already_signed_out: "Вы вышли из системы."
+    registrations:
+      signed_up: "Вы успешно зарегистрировались."
+      updated: "Данные учётной записи обновлены."
+      updated_but_not_signed_in: "Данные обновлены. Войдите снова."
+      destroyed: "Учётная запись удалена."
