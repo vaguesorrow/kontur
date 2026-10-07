@@ -114,8 +114,6 @@ def seed
   create_users
   create_articles
   create_comments(2..8)
-
-  puts "Готово: пользователи, профили, статьи, комментарии"
 end
 
 seed
