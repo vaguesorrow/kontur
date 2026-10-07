@@ -5,14 +5,13 @@ class NavigationTest < ActionDispatch::IntegrationTest
 
   test "shared menu appears on section pages without duplicate navigation" do
     paths = [root_path, pages_about_path, pages_community_path, articles_path,
-             pages_faq_path, pages_interactives_path, projects_path, comments_path]
-    menu_paths = paths - [projects_path, comments_path]
+             pages_faq_path, pages_interactives_path, comments_path]
+    menu_paths = paths - [comments_path]
     paths.each do |path|
       get path
       assert_response :success
       assert_select "nav.menuBar", count: 1 do
         menu_paths.each { |destination| assert_select "a[href=?]", destination, count: 1 }
-        assert_select "a[href=?]", projects_path, count: 0
         assert_select "a[href=?]", comments_path, count: 0
         assert_select "a[href=?]", new_user_session_path, text: "Войти"
         assert_select "a[href=?]", new_user_registration_path, text: "Зарегистрироваться"

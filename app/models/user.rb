@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :projects
   has_one :profile, dependent: :destroy
 
   # Devise uses encrypted_password internally; the database stores password_digest.

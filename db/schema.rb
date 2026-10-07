@@ -42,15 +42,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_225736) do
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email", default: "", null: false
@@ -70,5 +61,4 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_225736) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "users"
 end
