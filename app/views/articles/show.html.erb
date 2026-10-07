@@ -8,3 +8,39 @@
 
   <%= button_to "Destroy this article", @article, method: :delete %>
 </div>
+
+<section id="comments">
+  <h2>Комментарии</h2>
+  <% comments = @article.comments.includes(user: :profile).order(:created_at, :id).to_a.select(&:persisted?) %>
+  <% if comments.empty? %>
+    <p>Комментариев пока нет. Оставьте первый!</p>
+  <% else %>
+    <% comments.each do |comment| %>
+      <div id="<%= dom_id(comment) %>">
+        <strong><%= comment.user.profile&.display_name.presence || comment.user.username.presence || comment.user.email %></strong>
+        <%= simple_format(comment.body) %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <% comment = @comment || @article.comments.build %>
+    <%= form_with(model: [@article, comment]) do |form| %>
+      <% if comment.errors.any? %>
+        <div role="alert">
+          <p>Не удалось добавить комментарий:</p>
+          <ul>
+            <% comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form.label :body, "Ваш комментарий" %>
+      <%= form.text_area :body, rows: 4, required: true %>
+      <%= form.submit "Добавить комментарий" %>
+    <% end %>
+  <% else %>
+    <p><%= link_to "Войдите", new_user_session_path %> или <%= link_to "зарегистрируйтесь", new_user_registration_path %>, чтобы оставить комментарий.</p>
+  <% end %>
+</section>

@@ -3,6 +3,8 @@ ru:
     models:
       user: "Пользователь"
     attributes:
+      comment:
+        body: "Комментарий"
       user:
         email: "Электронная почта"
         username: "Имя пользователя"
